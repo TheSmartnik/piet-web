@@ -5,7 +5,14 @@ source "https://rubygems.org"
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem 'rack-app'
-gem 'rspec'
-gem 'rspec-its'
-gem 'pry'
+
+group :development, :test do
+  gem 'pry'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-its'
+  gem 'rspec-rainbow'
+end
 
