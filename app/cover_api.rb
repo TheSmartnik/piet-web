@@ -1,6 +1,7 @@
 require 'rack/app'
+require_relative 'binary_cover'
 
-class App < Rack::App
+class CoverApi < Rack::App
 
   # TODO: Make method idempotent
   desc 'Get cover for book'
@@ -11,6 +12,6 @@ class App < Rack::App
   end
 
   get '/cover' do
-    serve_file 'cover.png'
+    BinaryCover.new(title: params['title'], author: params['author']).call
   end
 end

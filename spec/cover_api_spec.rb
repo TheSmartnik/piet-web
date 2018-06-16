@@ -1,16 +1,26 @@
 require 'spec_helper'
-require_relative '../app'
+require_relative '../app/cover_api'
+require_relative '../app/cover_generator'
 require 'rack/app/test'
 
-describe App do
+describe CoverApi do
   include Rack::App::Test
 
   rack_app described_class
 
   describe '/cover' do
     let(:params) { { title: 'Le Petit Prince', author: 'Le pilote français' } }
-    let(:expected_body) do
-      File.open("#{__dir__}/../cover.png", 'rb') { |f| f.read }
+
+    let(:cover_path) { "#{__dir__}/fixtures/test_cover.png" }
+    let(:cover) { File.open(cover_path, 'rb') }
+    let!(:expected_body) do
+      FileUtils.cp("#{__dir__}/fixtures/cover.png", cover_path)
+      File.open(cover_path, 'rb') { |f| f.read }
+    end
+
+    before do
+      allow(CoverGenerator).
+        to receive(:new).and_return(double(call: double(cover_path: cover.path)))
     end
 
     subject{ get(url: '/cover', params: params) }
