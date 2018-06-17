@@ -1,0 +1,9 @@
+<h1> Upload CSV file with authors and titles and get images </h1>
+
+<%=
+  form_for :batch, '/batch', enctype: 'multipart/form-data' do
+    file_field :csv_file
+
+    submit 'Create Covers'
+  end
+%>
