@@ -39,3 +39,9 @@ rackup
 ```
 
 * Visit http://localhost:9292/cover?title=Book%20Title&author=Book%20Author
+
+## What this awesome web app can do?
+
+* Generate covers on request
+* Generate multiple covers from csv file
+  - http://localhost:9292/batch
