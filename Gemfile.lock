@@ -28,6 +28,7 @@ GEM
     rspec-rainbow (0.2.1)
       rspec (>= 2.14.0, < 4)
     rspec-support (3.7.1)
+    rubyzip (1.2.1)
 
 PLATFORMS
   ruby
@@ -38,6 +39,7 @@ DEPENDENCIES
   rspec
   rspec-its
   rspec-rainbow
+  rubyzip
 
 BUNDLED WITH
    1.16.2

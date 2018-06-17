@@ -9,7 +9,8 @@ RSpec.describe BatchGeneration do
       expect(CoverGenerator).
         to receive(:new).and_return(double(call: true)).exactly(2).times
 
-      described_class.new(csv_file).call
+      result = described_class.new(csv_file).call
+      expect(result).to respond_to(:archive)
     end
   end
 end
