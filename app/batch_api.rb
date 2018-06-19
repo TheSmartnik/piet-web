@@ -17,13 +17,12 @@ class BatchApi < Rack::App
 
   desc 'Show batch form'
   get '/batch' do
-    response['headers'] = 'Content-Type=text/html'
+    # response['headers'] = 'Content-Type=text/html'
     render 'batch.html.erb'
   end
 
   desc 'Create zip with covers from csv'
   post '/batch' do
-    binding.pry
     params = Rack::Multipart.extract_multipart request
     csv_file = params['batch']['csv_file']
     return if csv_file[:type] != 'text/csv'
