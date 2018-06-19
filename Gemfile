@@ -9,6 +9,17 @@ gem 'rack-app-front_end'
 gem 'rubyzip'
 gem 'hanami-helpers'
 
+group :production do
+  gem 'unicorn'
+end
+
+group :development do
+  gem "capistrano", "~> 3.11", require: false
+  gem 'capistrano-unicorn-nginx', '~> 4.1.0'
+  gem 'capistrano-rbenv', '~> 2.1'
+  gem 'capistrano-bundler', '~> 1.3'
+end
+
 group :development, :test do
   gem 'pry'
 end
