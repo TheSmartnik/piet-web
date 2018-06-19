@@ -23,6 +23,7 @@ class BatchApi < Rack::App
 
   desc 'Create zip with covers from csv'
   post '/batch' do
+    binding.pry
     params = Rack::Multipart.extract_multipart request
     csv_file = params['batch']['csv_file']
     return if csv_file[:type] != 'text/csv'
