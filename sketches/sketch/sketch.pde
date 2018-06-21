@@ -85,14 +85,14 @@ void drawTextBlock(int column) {
   PFont titleFont = createFont("fonts/Graphik LC-Medium.otf", 32);
 
 
-  textFont(authorFont, 24);
+  textFont(authorFont, 18);
   int authorWidth = ceil(textWidth(author) + Padding * 2);
 
   textFont(titleFont, 32);
-  int titleWidth = ceil(textWidth(title) + Padding * 2);
-
   // Title on two lines is ok
-  int widestText = titleWidth > authorWidth ? titleWidth / 2 : authorWidth;
+  int titleWidth = ceil(textWidth(title) + Padding * 2) / 2;
+
+  int widestText = titleWidth > authorWidth ? titleWidth : authorWidth;
 
   int textOffsetX;
   int textBoxWidth;
@@ -108,11 +108,11 @@ void drawTextBlock(int column) {
 
   fill(textColor);
 
-  textFont(authorFont, 24);
+  textFont(authorFont, 18);
   text(author, textOffsetX, currentOffsetY + 40, textBoxWidth, textBoxHeight);
 
   textFont(titleFont, 32);
-  text(title, textOffsetX, currentOffsetY + 80, textBoxWidth, textBoxHeight);
+  text(title, textOffsetX, currentOffsetY + 70, textBoxWidth, textBoxHeight);
 
 }
 
