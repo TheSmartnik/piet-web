@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
-set :application, "petit"
+set :application, "piet"
 set :repo_url, "git@github.com:TheSmartnik/piet-web.git"
 
 set :rbenv_type, :user

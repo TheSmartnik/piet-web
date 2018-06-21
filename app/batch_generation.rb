@@ -8,7 +8,7 @@ require 'rack/app'
 class BatchGeneration
   class BatchResult
     include Enumerable
-    BATCHES_PATH = "#{Rack::Directory.new('').root}/tmp/batches"
+    TMP_PATH = "#{Rack::Directory.new('').root}/tmp"
 
     def initialize(members)
       @members = members
@@ -21,7 +21,7 @@ class BatchGeneration
     end
 
     def archive
-      zipfile_path = "#{BATCHES_PATH}/#{SecureRandom.hex}.zip"
+      zipfile_path = "#{TMP_PATH}/#{SecureRandom.hex}.zip"
 
       Zip::File.open(zipfile_path, Zip::File::CREATE) do |zipfile|
         self.each do |generator|

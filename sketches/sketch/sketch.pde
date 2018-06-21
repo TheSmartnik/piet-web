@@ -7,7 +7,10 @@ int numberOfShapes = 12;
 int currentOffsetX = 0;
 int currentOffsetY = 0;
 
-int[] colors = {#81CFE0, #F64747, #F7CA18, #FF8E8E, #65C6BB};
+int[] colors = {#BFC932, #FDD734, #FFB200, #FB8C00, #F24B21, #320A28};
+
+int textBlockColor= #320A28;
+int textColor= #FFFFFF;
 
 String author;
 String title;
@@ -51,7 +54,7 @@ void drawGrid() {
 }
 
 void drawShape() {
-  int randomShapePosition = round(random(numberOfShapes -1));
+  int randomShapePosition = round(random(shapes.size() - 1));
   int randomShapeColorPosition = round(random(colors.length -1));
 
   PShape shape = shapes.get(randomShapePosition);
@@ -75,20 +78,27 @@ void drawBlock() {
 }
 
 void drawTextBlock(int column) {
-  fill(255);
+  fill(textBlockColor);
   rect(currentOffsetX, currentOffsetY, blockWidth() * 2, blockHeight());
 
-  PFont authorFont = createFont("fonts/Graphik LC-Light.otf", 16);
+  PFont authorFont = createFont("fonts/Graphik LC-Light.otf", 24);
   PFont titleFont = createFont("fonts/Graphik LC-Medium.otf", 32);
 
+
+  textFont(authorFont, 24);
+  int authorWidth = ceil(textWidth(author) + Padding * 2);
+
   textFont(titleFont, 32);
-  int textWidth = ceil(textWidth(title) + Padding * 2);
+  int titleWidth = ceil(textWidth(title) + Padding * 2);
+
+  // Title on two lines is ok
+  int widestText = titleWidth > authorWidth ? titleWidth / 2 : authorWidth;
 
   int textOffsetX;
   int textBoxWidth;
   int textBoxHeight = blockHeight() - Padding * 2 / 2;
 
-  if(textWidth / 2 <= blockWidth()) {
+  if(widestText <= blockWidth()) {
     textOffsetX = currentOffsetX + blockWidth();;
     textBoxWidth = blockWidth() - Padding;
   } else {
@@ -96,7 +106,7 @@ void drawTextBlock(int column) {
     textBoxWidth = blockWidth() * 2 - Padding * 2;
   }
 
-  fill(0);
+  fill(textColor);
 
   textFont(authorFont, 24);
   text(author, textOffsetX, currentOffsetY + 40, textBoxWidth, textBoxHeight);

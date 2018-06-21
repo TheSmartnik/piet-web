@@ -1,7 +1,7 @@
 require 'rack/app'
 
 class CoverGenerator
-  COVERS_PATH = "#{Rack::Directory.new('').root}/tmp/covers"
+  TMP_PATH = "#{Rack::Directory.new('').root}/tmp"
   SKETCHES_PATH = "#{Rack::Directory.new('').root}/sketches"
   DEFAULT_SKETCH = 'sketch'
 
@@ -11,7 +11,7 @@ class CoverGenerator
     @title = title
     @author = author
     @cover_name = "#{author} - #{title}"
-    @cover_path = "#{COVERS_PATH}/#{cover_name}.png"
+    @cover_path = "#{TMP_PATH}/#{cover_name}.png"
   end
 
   def call
