@@ -15,7 +15,7 @@ class CoverGenerator
   end
 
   def call
-    `xvfb-run processing-java --sketch=#{SKETCHES_PATH}/#{DEFAULT_SKETCH} --run author='#{author}' title='#{title}' cover='#{COVERS_PATH}/#{cover_name}'`
+    `xvfb-run processing-java --sketch=#{SKETCHES_PATH}/#{DEFAULT_SKETCH} --run author='#{author}' title='#{title}' cover='#{TMP_PATH}/#{cover_name}'`
     self
   end
 end
